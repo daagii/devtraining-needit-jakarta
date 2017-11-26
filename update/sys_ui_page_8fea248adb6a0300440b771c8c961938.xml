@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[jQuery("#addDog").click(function(){
+	
+	var ga = new GlideAjax('fetchUtils');
+	
+	ga.addParam('sysparm_name', 'createDog');
+	ga.addParam('sysparm_dog_name', jQuery('#dogName').val());
+	ga.addParam('sysparm_dog_age', jQuery('#dogAge').val());
+	ga.addParam('sysparm_dog_neutered', jQuery('#dogNeutured').is(':checked'));
+	ga.addParam('sysparm_dog_shots', jQuery('#dogShots').is(':checked'));
+	ga.getXML(fetchCallback);
+	
+});
+
+function fetchCallback(response) {
+	var answer = response.responseXML.documentElement.getAttribute("answer").split('|');
+	//jQuery('#msg').remove('.successMessage');
+	jQuery('#msg').append('<p class="successMessage">' + answer[0] + answer[1] +answer[2] +answer[3] +' added successfully!</p>');
+	//alert(answer);
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_58872_needit_Dog Form.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<div class="container">  
+		<h2>Add Dog</h2>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="name">Dog Name</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-user">@</i></span>
+					<input type="text" class="form-control" placeholder="Dog Name" name="name" id="dogName"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="age">Dog Age</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-car">@</i></span>
+					<input type="text" class="form-control" placeholder="Dog Age" name="age" id="dogAge"/>
+				</div>
+			</div>
+			<div class="form-group">        
+				<div class="col-sm-offset-2 col-sm-10">
+					<div class="checkbox">
+						<label><input type="checkbox" name="neutured" id="dogNeutured"/>Neutured</label>
+					</div>
+					<div class="checkbox">
+						<label><input type="checkbox" name="shots" id="dogShots"/>Shots</label>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="form-group">        
+			<div class="col-sm-offset-2 col-sm-10">
+				<button class="btn btn-default" id="addDog">Submit</button>
+			</div>
+		</div>
+	</div>
+	<pre id="msg"></pre>
+</j:jelly>]]></html>
+        <name>Dog Form</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>dave.jookhuu</sys_created_by>
+        <sys_created_on>2017-11-21 17:07:47</sys_created_on>
+        <sys_id>8fea248adb6a0300440b771c8c961938</sys_id>
+        <sys_mod_count>46</sys_mod_count>
+        <sys_name>Dog Form</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_ui_page_8fea248adb6a0300440b771c8c961938</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-21 21:17:02</sys_updated_on>
+    </sys_ui_page>
+</record_update>

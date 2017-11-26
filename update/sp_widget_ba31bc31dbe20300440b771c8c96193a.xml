@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function helloDog($scope, spUtil, $http){
+	/* widget controller */
+	var c = this;
+	
+	$scope.getUser = function(){		
+		var dataURL = spUtil.getWidgetURL($scope);
+		//console.log(dataURL);
+		$http.post(dataURL, $scope.data).success(function(){
+			angular.extend($scope.data, response.data);
+		});
+	};
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>dog-form</id>
+        <internal>false</internal>
+        <link/>
+        <name>Dog Form</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+	var data = {};
+	if(typeof input != "undefined"){
+
+		var gr = new GlideRecord("sys_user");
+		gr.get("user_name", input.username);
+		data.user = gr.getDisplayValue('name');
+	}	
+
+})();
+new JSON().encode(data);]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-20 23:04:56</sys_created_on>
+        <sys_id>ba31bc31dbe20300440b771c8c96193a</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Dog Form</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sp_widget_ba31bc31dbe20300440b771c8c96193a</sys_update_name>
+        <sys_updated_by>dave.jookhuu</sys_updated_by>
+        <sys_updated_on>2017-11-21 16:43:05</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default" ng-controller="helloDog">
+  <div class="panel-heading">
+    Username: <input type="text" class="form-control" ng-model="data.username">
+  </div>
+  <div class="panel-body">
+    <p>Hello, {{data.username}}</p>
+    <button class="btn btn-primary m-b" ng-click="getUser()">Get User</button>
+    <pre></pre>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
