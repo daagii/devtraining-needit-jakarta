@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element audit="true" extends="task" label="NeedIt" max_length="40" name="x_58872_needit_needit" sizeclass="2" type="collection">
+        <element choice="1" label="Favourite Ice Cream" max_length="40" name="favourite_ice_cream" type="choice">
+            <choice>
+                <element label="Chocolate" value="Chocolate"/>
+                <element label="Tropical" value="Tropical"/>
+                <element label="Vanilla" value="Vanilla"/>
+            </choice>
+        </element>
+        <element choice="1" label="Gender" max_length="40" name="gender" type="choice">
+            <choice>
+                <element label="Male" sequence="100" value="male"/>
+                <element label="Female" sequence="200" value="female"/>
+            </choice>
+        </element>
+        <element label="Audio File" max_length="40" name="u_audio_file" type="audio"/>
+        <element label="Date Submitted" max_length="40" name="u_date_submitted" type="glide_date"/>
+        <element label="Profile Image" max_length="100" name="u_profile_image" type="user_image"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="legal" label="Request type" mandatory="true" max_length="40" name="u_request_type" type="string">
+            <choice>
+                <element label="Human Resources" sequence="0" value="hr"/>
+                <element label="Facilities" sequence="1" value="facilities"/>
+                <element label="Legal" sequence="2" value="legal"/>
+                <element label="IT" sequence="3" value="it"/>
+                <element label="Accounting" sequence="4" value="accounting"/>
+                <element label="Communication" sequence="5" value="communication"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="mongolia" label="Travel Destiny" mandatory="true" max_length="40" name="u_travel_distany" type="string">
+            <choice>
+                <element label="Mongolia" sequence="0" value="mongolia"/>
+                <element label="Russia" sequence="1" value="russia"/>
+                <element label="Japan" sequence="2" value="japan"/>
+                <element label="Korea" sequence="3" value="korea"/>
+                <element label="Mexico" sequence="4" value="mexico"/>
+            </choice>
+        </element>
+        <element label="User Name" max_length="32" name="u_user_name" read_only="true" reference="sys_user" type="reference"/>
+        <element choice="3" default="legal 1" label="What needed" max_length="40" name="u_what_needed" type="choice">
+            <choice>
+                <element label="Facilities 1" value="facilities1"/>
+                <element label="Facilities2" value="facilities2"/>
+                <element label="Human Resources 1" value="hr1"/>
+                <element label="Human Resources 2" value="hr2"/>
+                <element label="Legal 1" value="legal 1"/>
+                <element label="Legal 2" value="legal2"/>
+                <element label="Profisional Services" value="profisional_services"/>
+            </choice>
+        </element>
+        <element label="When needed" mandatory="true" max_length="40" name="u_when_needed" type="glide_date_time"/>
+    </element>
+</database>
